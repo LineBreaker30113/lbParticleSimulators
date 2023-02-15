@@ -566,7 +566,7 @@ public class ParticleEngine_v1 extends JPanel implements KeyListener {
 			}
 		}
 		
-		public AnyVariableListener listener;
+		public AnyVariableListener listener = null;
 		public lbButton pick;
 		
 		public void removeListener(VariableRemovalMessage removal) {

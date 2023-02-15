@@ -529,8 +529,14 @@ public class ParticleAplication_v1_1 extends Aplication {
 					PointVariable point = (PointVariable) gui;
 					point.variable = variable.increase(loadCenter);
 					gui.center = center.increase(loadCenter);
-					if(xindex != -1) { point.x = (NumberVariable) getIndexed(array, xindex).gui; point.x.addListener(point); }
-					if(yindex != -1) { point.y = (NumberVariable) getIndexed(array, yindex).gui; point.y.addListener(point); }
+					if(xindex != -1) {
+						point.x = (NumberVariable) getIndexed(array, xindex).gui; point.x.addListener(point);
+						point.x.addListener(point);
+					}
+					if(yindex != -1) {
+						point.y = (NumberVariable) getIndexed(array, yindex).gui; point.y.addListener(point);
+						point.y.addListener(point);
+					}
 					return false;
 				}
 			}
@@ -582,9 +588,18 @@ public class ParticleAplication_v1_1 extends Aplication {
 				public boolean extract(ArrayList<GUIpointer> array, point2f loadCenter) {
 					PlainField field = (PlainField) gui;
 					gui.center = center.increase(loadCenter);
-					if(xindex != -1) { field.xExtend = (NumberVariable) getIndexed(array, xindex).gui; }
-					if(yindex != -1) { field.yExtend = (NumberVariable) getIndexed(array, yindex).gui; }
-					if(FCindex != -1) { field.fieldCenter = (PointVariable) getIndexed(array, FCindex).gui; }
+					if(xindex != -1) {
+						field.xExtend = (NumberVariable) getIndexed(array, xindex).gui;
+						field.xExtend.addListener(field);
+					}
+					if(yindex != -1) {
+						field.yExtend = (NumberVariable) getIndexed(array, yindex).gui;
+						field.yExtend.addListener(field);
+					}
+					if(FCindex != -1) {
+						field.fieldCenter = (PointVariable) getIndexed(array, FCindex).gui;
+						field.fieldCenter.addListener(field);
+					}
 					return false;
 				}
 			}
@@ -623,7 +638,10 @@ public class ParticleAplication_v1_1 extends Aplication {
 				public boolean extract(ArrayList<GUIpointer> array, point2f loadCenter) {
 					FieldAudience faudience = (FieldAudience) gui;
 					gui.center = center.increase(loadCenter);
-					if(findex != -1) { faudience.targetField = (AnyField) getIndexed(array, findex).gui; }
+					if(findex != -1) {
+						faudience.targetField = (AnyField) getIndexed(array, findex).gui;
+						faudience.targetField.addFieldTargettedOne(faudience);
+					}
 					return false;
 				}
 			}
@@ -655,10 +673,22 @@ public class ParticleAplication_v1_1 extends Aplication {
 				public boolean extract(ArrayList<GUIpointer> array, point2f loadCenter) {
 					HorrizontalRepellingBorderLine hrbl = (HorrizontalRepellingBorderLine) gui;
 					gui.center = center.increase(loadCenter);
-					if(Cindex != -1) { hrbl.borderCenter = (PointVariable) getIndexed(array, Cindex).gui; }
-					if(Eindex != -1) { hrbl.extend = (NumberVariable) getIndexed(array, Eindex).gui; }
-					if(Windex != -1) { hrbl.width = (NumberVariable) getIndexed(array, Windex).gui; }
-					if(Findex != -1) { hrbl.force = (NumberVariable) getIndexed(array, Findex).gui; }
+					if(Cindex != -1) {
+						hrbl.borderCenter = (PointVariable) getIndexed(array, Cindex).gui;
+						hrbl.borderCenter.addListener(hrbl);
+					}
+					if(Eindex != -1) {
+						hrbl.extend = (NumberVariable) getIndexed(array, Eindex).gui;
+						hrbl.extend.addListener(hrbl);
+					}
+					if(Windex != -1) {
+						hrbl.width = (NumberVariable) getIndexed(array, Windex).gui;
+						hrbl.width.addListener(hrbl);
+					}
+					if(Findex != -1) {
+						hrbl.force = (NumberVariable) getIndexed(array, Findex).gui;
+						hrbl.force.addListener(hrbl);
+					}
 					return false;
 				}
 				@Override
@@ -711,10 +741,22 @@ public class ParticleAplication_v1_1 extends Aplication {
 				public boolean extract(ArrayList<GUIpointer> array, point2f loadCenter) {
 					VerticalRepellingBorderLine vrbl = (VerticalRepellingBorderLine) gui;
 					gui.center = center.increase(loadCenter);
-					if(Cindex != -1) { vrbl.borderCenter = (PointVariable) getIndexed(array, Cindex).gui; }
-					if(Eindex != -1) { vrbl.extend = (NumberVariable) getIndexed(array, Eindex).gui; }
-					if(Windex != -1) { vrbl.width = (NumberVariable) getIndexed(array, Windex).gui; }
-					if(Findex != -1) { vrbl.force = (NumberVariable) getIndexed(array, Findex).gui; }
+					if(Cindex != -1) {
+						vrbl.borderCenter = (PointVariable) getIndexed(array, Cindex).gui;
+						vrbl.borderCenter.addListener(vrbl);
+					}
+					if(Eindex != -1) {
+						vrbl.extend = (NumberVariable) getIndexed(array, Eindex).gui;
+						vrbl.extend.addListener(vrbl);
+					}
+					if(Windex != -1) {
+						vrbl.width = (NumberVariable) getIndexed(array, Windex).gui;
+						vrbl.width.addListener(vrbl);
+					}
+					if(Findex != -1) {
+						vrbl.force = (NumberVariable) getIndexed(array, Findex).gui;
+						vrbl.force.addListener(vrbl);
+					}
 					return false;
 				}
 				@Override
@@ -776,11 +818,26 @@ public class ParticleAplication_v1_1 extends Aplication {
 				public boolean extract(ArrayList<GUIpointer> array, point2f loadCenter) {
 					BasicParticleType basicPT = (BasicParticleType) gui;
 					gui.center = center.increase(loadCenter);
-					if(SPindex != -1) { basicPT.spawnPosition = (PointVariable) getIndexed(array, SPindex).gui; }
-					if(SCindex != -1) { basicPT.spawnCountV = (NumberVariable) getIndexed(array, SCindex).gui; }
-					if(Rindex != -1) { basicPT.radiusV = (NumberVariable) getIndexed(array, Rindex).gui; }
-					if(Mindex != -1) { basicPT.massV = (NumberVariable) getIndexed(array, Mindex).gui; }
-					if(Tindex != -1) { basicPT.toughnessV = (NumberVariable) getIndexed(array, Tindex).gui; }
+					if(SPindex != -1) {
+						basicPT.spawnPosition = (PointVariable) getIndexed(array, SPindex).gui;
+						basicPT.spawnPosition.addListener(basicPT);
+					}
+					if(SCindex != -1) {
+						basicPT.spawnCountV = (NumberVariable) getIndexed(array, SCindex).gui;
+						basicPT.spawnCountV.addListener(basicPT);
+					}
+					if(Rindex != -1) {
+						basicPT.radiusV = (NumberVariable) getIndexed(array, Rindex).gui;
+						basicPT.radiusV.addListener(basicPT);
+					}
+					if(Mindex != -1) {
+						basicPT.massV = (NumberVariable) getIndexed(array, Mindex).gui;
+						basicPT.massV.addListener(basicPT);
+					}
+					if(Tindex != -1) {
+						basicPT.toughnessV = (NumberVariable) getIndexed(array, Tindex).gui;
+						basicPT.toughnessV.addListener(basicPT);
+					}
 					basicPT.collidingOTb.istrue = isCollidingOT; basicPT.collidingSTb.istrue = isCollidingST;
 					basicPT.movingB.istrue = isMoving;
 					basicPT.xmovingB.istrue = isXmoving; basicPT.ymovingB.istrue = isYmoving;
@@ -852,7 +909,7 @@ public class ParticleAplication_v1_1 extends Aplication {
 			
 			public lbButton set, pick;
 			public boolean iss = false, islistening = false, ismove = false, isrename = false;
-			public char[] filePath = new char[0];
+			public char[] filePath = new char[0], previous = new char[0];
 			public AnyFileHandle handler;
 			
 			public lbFile getFile() throws IOException {
@@ -892,6 +949,7 @@ public class ParticleAplication_v1_1 extends Aplication {
 					owner.isCommandListening = false;
 					islistening = false; iss = false;
 					ismove = false; isrename = false;
+					filePath = previous;
 					return;
 				}
 				if(owner.kbhandle.enter && !owner.entered) {
@@ -899,6 +957,7 @@ public class ParticleAplication_v1_1 extends Aplication {
 					if(iss) {
 						owner.command = new char[0]; owner.isCommandListening = false;
 						islistening = false; iss = false; name = new String(filePath);
+						previous = filePath;
 						return;
 					}
 					if(ismove) { ismove = false; islistening = false; owner.islistening = false; return; }
